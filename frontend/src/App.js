@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Header";
+import Register from "./Register";
+import Login from "./Login";
 import { getApi } from "./Api";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -30,46 +32,15 @@ class App extends Component {
               <h1>About Us Page</h1>
             </Route>
             <Route path="/login">
-              <h1>Login Page</h1>
+              <Header />
+              <Login />
             </Route>
             <Route path="/register">
-              <h1>Register Page</h1>
+              <Header />
+              <Register />
             </Route>
             <Route path="/">
               <Header />
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
-              <h1>Homepage</h1>
               <h1>Homepage</h1>
             </Route>
           </Switch>
