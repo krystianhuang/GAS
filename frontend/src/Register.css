@@ -56,6 +56,13 @@
   font-weight: bold;
 }
 
+.register__disclaimer > p {
+  font-size: 13px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .register__signIn {
   background-color: tomato;
   border-radius: 3px;

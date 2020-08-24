@@ -11,13 +11,17 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <nav className="header">
-      <Link to="/">
-        <img
-          className="header__image"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/No-logo.svg/800px-No-logo.svg.png"
-          alt=""
-        />
-      </Link>
+      <div className="header__logo">
+        {" "}
+        <Link to="/">
+          <img
+            className="header__image"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/No-logo.svg/800px-No-logo.svg.png"
+            alt=""
+          />
+        </Link>
+      </div>
+
       <div className="header__nav">
         <Link to="/login" className="header__link">
           <div className="header__option">

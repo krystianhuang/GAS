@@ -23,16 +23,14 @@ function Register() {
           <h5>Password</h5>
           <input type="password"></input>
         </form>
+        <div className="register__disclaimer">
+          <p>
+            By Clicking 'Create Account', you Agree to "NAME" Terms of use and
+            Cookie & Privacy Policy.
+          </p>
+        </div>
         <div className="register__registerContainer">
           <button className="register__registerAcc">Create Account</button>
-        </div>
-        <div className="register__disclaimer">
-          <label>
-            <input type="checkbox" />
-            <span>
-              I Agree to "Name" Terms of Use and Cookie & Privacy Policy.
-            </span>
-          </label>
         </div>
 
         <Link to="login">
