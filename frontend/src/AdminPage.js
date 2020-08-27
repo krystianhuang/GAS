@@ -20,10 +20,10 @@ export default function AdminHomePage() {
     <div className={classes.root}>
       <AdminHeader />
       <Grid container spacing={3}>
-      <Grid item xs={12}>
+      <Grid item xs={6}>
       <Button color="primary">View Student Database</Button>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={6}>
       <Button variant="contained" color="secondary" size="Large">Sort Groups</Button>
       
       
