@@ -4,6 +4,7 @@ import "./App.css";
 import { getApi } from "./Api";
 import SignInSide from "../src/loginPage";
 import RegisterSide from "../src/Register";
+import AdminHomePage from "../src/AdminPage";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Header from "../src/Header";
 import Home from "./Home";
@@ -26,6 +27,7 @@ class App extends React.Component {
             {/* <Route exact path="/" component={Home} /> */}
             <Route path="/loginpage" component={SignInSide} />
             <Route path="/register" component={RegisterSide} />
+            <Route path="/adminpage" component={AdminHomePage} />
             <Route path="/">
               <Header />
               <Home />
