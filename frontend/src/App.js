@@ -7,6 +7,7 @@ import RegisterSide from "../src/Register";
 import AdminHomePage from "../src/AdminPage";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Header from "../src/Header";
+import AdminHeader from "../src/AdminHeader";
 import Home from "./Home";
 import Footer from "./Footer";
 
@@ -27,6 +28,7 @@ class App extends React.Component {
             {/* <Route exact path="/" component={Home} /> */}
             <Route path="/loginpage" component={SignInSide} />
             <Route path="/register" component={RegisterSide} />
+            
             <Route path="/adminpage" component={AdminHomePage} />
             <Route path="/">
               <Header />
