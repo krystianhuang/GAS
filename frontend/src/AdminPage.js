@@ -19,11 +19,11 @@ export default function AdminHomePage() {
   return (
     <div className={classes.root}>
       <AdminHeader />
-      <Grid container spacing={3}>
+      <Grid container spacing={15}>
       <Grid item xs={6}>
-      <Button color="primary">View Student Database</Button>
+      <Button variant="contained" color="secondary" size="Large">View Student Database</Button>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={3}>
       <Button variant="contained" color="secondary" size="Large">Sort Groups</Button>
       
       
