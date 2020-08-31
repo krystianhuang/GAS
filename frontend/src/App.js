@@ -8,6 +8,7 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Header from "../src/Header";
 import Home from "./Home";
 import Footer from "./Footer";
+import StudentPreferences from "../src/StudentPreferences";
 import StudentDashboard from "../src/StudentDashboard";
 
 class App extends React.Component {
@@ -28,6 +29,8 @@ class App extends React.Component {
             <Route path="/loginpage" component={SignInSide} />
             <Route path="/register" component={RegisterSide} />
             <Route path="/studentDashboard" component={StudentDashboard} />
+            <Route path="/studentDashboard" component={StudentDashboard} />
+            <Route path="/preferences" component={StudentPreferences} />
             <Route path="/">
               <Header />
               <Home />

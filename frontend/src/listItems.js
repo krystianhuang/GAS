@@ -12,27 +12,48 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import HomeIcon from "@material-ui/icons/Home";
 import HelpIcon from "@material-ui/icons/Help";
+<<<<<<< Updated upstream
 import Link from "@material-ui/core/Link";
+import StudentPreferences from "../src/StudentPreferences";
+import { NavLink } from "react-router-dom";
+=======
+import { NavLink, Link } from "react-router-dom";
+>>>>>>> Stashed changes
 
 export const mainListItems = (
   <div>
-    <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItem>
+    <NavLink to="/studentDashboard">
+      <ListItem button>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItem>
+    </NavLink>
+
+<<<<<<< Updated upstream
+    <NavLink to="/preferences">
+      <ListItem button>
+        <ListItemIcon>
+          <AssignmentIcon />
+        </ListItemIcon>
+        <ListItemText primary="My Preferences" />
+      </ListItem>
+    </NavLink>
+
+=======
     <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="My Preferences" />
     </ListItem>
+>>>>>>> Stashed changes
     <ListItem button>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Join a group" />
+      <ListItemText primary="My Groups" />
     </ListItem>
   </div>
 );
@@ -52,13 +73,13 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Take me home" />
     </ListItem>
-    <Link href="/home">
+    <NavLink to="/">
       <ListItem button>
         <ListItemIcon>
           <ExitToAppIcon />
         </ListItemIcon>
         <ListItemText primary="Logout" />
       </ListItem>
-    </Link>
+    </NavLink>
   </div>
 );

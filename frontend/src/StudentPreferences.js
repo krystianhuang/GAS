@@ -21,15 +21,13 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import StudentPreferences from "../src/StudentPreferences";
-import { NavLink } from "react-router-dom";
-import Button from "@material-ui/core/Button";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        THIS ISHHHHHASHASHAHSH
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -156,18 +154,11 @@ export default function Dashboard() {
             noWrap
             className={classes.title}
           >
-            Welcome To Your Dashboard, USER
+            Dashboard
           </Typography>
-          <Link href="/home" variants="body2">
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              className={classes.button}
-            >
-              Home
-            </Button>
-          </Link>
+          <IconButton color="inherit">
+            <ExitToAppIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
