@@ -14,7 +14,7 @@ import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -23,6 +23,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import StudentPreferences from "../src/StudentPreferences";
 import { NavLink } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
 
 function Copyright() {
   return (
@@ -165,7 +166,7 @@ export default function Dashboard() {
               size="large"
               className={classes.button}
             >
-              Home
+              <ExitToAppIcon />
             </Button>
           </Link>
         </Toolbar>

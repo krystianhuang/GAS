@@ -14,20 +14,23 @@ import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import StudentPreferences from "../src/StudentPreferences";
+import { NavLink } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        THIS ISHHHHHASHASHAHSH
+        Your Website
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -154,11 +157,18 @@ export default function Dashboard() {
             noWrap
             className={classes.title}
           >
-            Dashboard
+            Your Subject Preferences
           </Typography>
-          <IconButton color="inherit">
-            <ExitToAppIcon />
-          </IconButton>
+          <Link href="/home" variants="body2">
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              className={classes.button}
+            >
+              <ExitToAppIcon />
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -185,6 +195,15 @@ export default function Dashboard() {
             <Copyright />
           </Box>
         </Container>
+        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
+        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
+        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
+        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
+        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
+        {/* INSERT YOUR CODE HERE NUO CHEN */}
+        {/* INSERT YOUR CODE HERE NUO CHEN */}
+        {/* INSERT YOUR CODE HERE NUO CHEN */}
+        {/* INSERT YOUR CODE HERE NUO CHEN */}
       </main>
     </div>
   );

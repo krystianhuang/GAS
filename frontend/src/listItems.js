@@ -12,13 +12,12 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import HomeIcon from "@material-ui/icons/Home";
 import HelpIcon from "@material-ui/icons/Help";
-<<<<<<< Updated upstream
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import Link from "@material-ui/core/Link";
 import StudentPreferences from "../src/StudentPreferences";
 import { NavLink } from "react-router-dom";
-=======
-import { NavLink, Link } from "react-router-dom";
->>>>>>> Stashed changes
 
 export const mainListItems = (
   <div>
@@ -27,33 +26,24 @@ export const mainListItems = (
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
-        <ListItemText primary="Dashboard" />
+        <ListItemText textDecoration="none" primary="Dashboard" />
       </ListItem>
     </NavLink>
 
-<<<<<<< Updated upstream
     <NavLink to="/preferences">
       <ListItem button>
         <ListItemIcon>
           <AssignmentIcon />
         </ListItemIcon>
-        <ListItemText primary="My Preferences" />
+        <ListItemText textDecoration="none" primary="My Preferences" />
       </ListItem>
     </NavLink>
 
-=======
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="My Preferences" />
-    </ListItem>
->>>>>>> Stashed changes
     <ListItem button>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="My Groups" />
+      <ListItemText textDecoration="none" primary="My Groups" />
     </ListItem>
   </div>
 );
@@ -67,19 +57,14 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Ask a question" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <HomeIcon />
-      </ListItemIcon>
-      <ListItemText primary="Take me home" />
-    </ListItem>
-    <NavLink to="/">
+
+    <Link href="/">
       <ListItem button>
         <ListItemIcon>
           <ExitToAppIcon />
         </ListItemIcon>
-        <ListItemText primary="Logout" />
+        <ListItemText textDecoration="none" primary="Logout" />
       </ListItem>
-    </NavLink>
+    </Link>
   </div>
 );
