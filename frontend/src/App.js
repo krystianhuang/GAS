@@ -30,6 +30,8 @@ class App extends React.Component {
             <Route path="/register" component={RegisterSide} />
             
             <Route path="/adminpage" component={AdminHomePage} />
+            <Route path="/studentdatabase"/>
+            <Route path="/sortgroups"/>
             <Route path="/">
               <Header />
               <Home />

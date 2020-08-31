@@ -35,7 +35,7 @@ function AdminHeader() {
             <span className="header_optionLineTwo">Settings</span>
           </div>
         </Link>
-        <Link to="/" className="header__link">
+        <Link to="/adminpage" className="header__link">
           <div className="header__option">
             <span className="header_optionLineOne">Admin</span>
             <span className="header_optionLineTwo">Dashboard</span>
