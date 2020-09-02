@@ -38,13 +38,14 @@ export const mainListItems = (
         <ListItemText textDecoration="none" primary="My Preferences" />
       </ListItem>
     </NavLink>
-
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText textDecoration="none" primary="My Groups" />
-    </ListItem>
+    <NavLink to="/studentGroup">
+      <ListItem button>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText textDecoration="none" primary="My Groups" />
+      </ListItem>
+    </NavLink>
   </div>
 );
 

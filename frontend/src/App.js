@@ -10,6 +10,7 @@ import Home from "./Home";
 import Footer from "./Footer";
 import StudentPreferences from "../src/StudentPreferences";
 import StudentDashboard from "../src/StudentDashboard";
+import studentGroup from "../src/studentGroup";
 
 class App extends React.Component {
   state = {
@@ -31,6 +32,7 @@ class App extends React.Component {
             <Route path="/studentDashboard" component={StudentDashboard} />
             <Route path="/studentDashboard" component={StudentDashboard} />
             <Route path="/preferences" component={StudentPreferences} />
+            <Route path="/studentGroup" component={studentGroup} />
             <Route path="/">
               <Header />
               <Home />
