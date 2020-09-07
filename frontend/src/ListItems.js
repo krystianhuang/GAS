@@ -9,10 +9,12 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import Link from "@material-ui/core/Link";
+
 
 export const mainListItems = (
   <div>
-    <ListItem button>
+    <ListItem button component="a" href="/loginpage">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
@@ -48,7 +50,7 @@ export const mainListItems = (
 export const secondaryListItems = (
   <div>
     <ListSubheader inset>Saved reports</ListSubheader>
-    <ListItem button href="/loginpage">
+    <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
