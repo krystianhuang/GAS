@@ -38,7 +38,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Reports" />
     </ListItem>
-    <ListItem button component="LogoutButton" href="/loginpage">
+    <ListItem button component="a" href="/loginpage">
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
