@@ -150,6 +150,21 @@ export default function AdminHomePage() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      </div>
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+        }}
+        open={open}
+      >
+        <div className={classes.toolbarIcon}>
+          <IconButton onClick={handleDrawerClose}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        
+      </Drawer>
+     
+    </div>
   );
 }
