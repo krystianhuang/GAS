@@ -14,7 +14,7 @@ import Link from "@material-ui/core/Link";
 
 export const mainListItems = (
   <div>
-    <ListItem button component="a" href="/loginpage">
+    <ListItem button component="a" href="/adminpage">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
@@ -38,11 +38,11 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Reports" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component="LogoutButton" href="/loginpage">
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <ListItemText primary="Logout" />
     </ListItem>
   </div>
 );
