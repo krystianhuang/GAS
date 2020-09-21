@@ -206,9 +206,7 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Box pt={4}>
-            <Copyright />
-          </Box>
+          
         </Container>
         <form className={classes.form} noValidate>
               <TextField
@@ -222,6 +220,9 @@ export default function Dashboard() {
                 type="number"
                 autoFocus
               />
+              <Container maxWidth="lg" className={classes.container}>
+          
+          </Container>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Developer type</FormLabel>
                 <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
