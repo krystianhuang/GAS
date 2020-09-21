@@ -25,6 +25,16 @@ import { NavLink } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -130,6 +140,11 @@ export default function Dashboard() {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  const [value, setValue] = React.useState('1. Online Shopping Website');
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -195,15 +210,147 @@ export default function Dashboard() {
             <Copyright />
           </Box>
         </Container>
-        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
-        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
-        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
-        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
-        {/* INSERT YOUR CODE HERE NUO CHEN */}{" "}
-        {/* INSERT YOUR CODE HERE NUO CHEN */}
-        {/* INSERT YOUR CODE HERE NUO CHEN */}
-        {/* INSERT YOUR CODE HERE NUO CHEN */}
-        {/* INSERT YOUR CODE HERE NUO CHEN */}
+        <form className={classes.form} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="studentid"
+                label="Student ID"
+                name="id"
+                type="number"
+                autoFocus
+              />
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Developer type</FormLabel>
+                <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                    <FormControlLabel value="1.	Frontend" control={<Radio />} label="1.	Frontend" />
+                    <FormControlLabel value="2.	Backend" control={<Radio />} label="2. Backend" />
+                    <FormControlLabel value="3.	Both" control={<Radio />} label="3.	Both" />
+                    <FormControlLabel value="4.	None" control={<Radio />} label="4.	None" />
+                </RadioGroup>
+                </FormControl>
+              <FormControl component="fieldset" className={classes.formControl}>
+                <FormLabel component="legend">Languages/Skills</FormLabel>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Checkbox name="1. Java" />}
+                    label="1. Java"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="2.	JavaScript" />}
+                    label="2. JavaScript"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="3. C" />}
+                    label="3. C"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="4. C++" />}
+                    label="4. C++"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="5. Python" />}
+                    label="5. Python"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="6. PHP" />}
+                    label="6. PHP"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="7. Ruby" />}
+                    label="7. Ruby"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="8. Swift" />}
+                    label="8. Swift"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="9. HTML & CSS" />}
+                    label="9. HTML & CSS"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="10. XML" />}
+                    label="10. XML"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="11. XCode IDE" />}
+                    label="11. XCode IDE"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="12. Objective-C" />}
+                    label="12. Objective-C"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="13. Android Studio" />}
+                    label="13. Android Studio"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="14. Firebase" />}
+                    label="14. Firebase"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="15. MongoDB" />}
+                    label="15. MongoDB"
+                  />
+                </FormGroup>
+                <FormHelperText>At least 1 language/skill for frontend and backend</FormHelperText>
+                </FormControl>
+
+                <FormControl component="fieldset" className={classes.formControl}>
+                <FormLabel component="legend">Role</FormLabel>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Checkbox name="1.	Documentation" />}
+                    label="1. Documentation"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="2.	Development" />}
+                    label="2. Development"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="3.	Wireframes Designer " />}
+                    label="3. Wireframes Designer "
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="4.	UI Designer" />}
+                    label="4. UI Designer"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="5.	Database Developer" />}
+                    label="5. Database Developer"
+                  />
+                </FormGroup>
+                <FormHelperText>Each group needs at least 1 of each role</FormHelperText>
+              </FormControl>
+              <FormControl component="fieldset">
+            <FormLabel component="legend">Topic</FormLabel>
+            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                <FormControlLabel value="1.	Online Shopping Website" control={<Radio />} label="1. Online Shopping Website" />
+                <FormControlLabel value="2.	Health Service Mobile Application" control={<Radio />} label="2. Health Service Mobile Application" />
+                <FormControlLabel value="3.	Messaging Mobile Application" control={<Radio />} label="3.	Messaging Mobile Application" />
+                <FormControlLabel value="4.	Restaurant Booking Website" control={<Radio />} label="4. Restaurant Booking Website" />
+                <FormControlLabel value="5.	Weather Website" control={<Radio />} label="5. Weather Website" />
+            </RadioGroup>
+            </FormControl>
+              {/* <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            /> */}
+              <p className={classes.p}>
+                By Clicking "Submit the preference", your docu will save
+              </p>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Submit the preference
+              </Button>
+            </form>
       </main>
     </div>
   );
