@@ -33,7 +33,7 @@ class App extends React.Component {
             <Route path="/studentDashboard" component={StudentDashboard} />
             <Route path="/preferences" component={StudentPreferences} />
             <Route path="/studentGroup" component={studentGroup} />
-            <Route path="/">
+            <Route path="/home" component={Home}>
               <Header />
               <Home />
             </Route>

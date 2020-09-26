@@ -18,7 +18,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { mainListItems, secondaryListItems } from "./listItems";
+import { mainListItems, secondaryListItems } from "./studentListItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import StudentPreferences from "../src/StudentPreferences";
 import { NavLink } from "react-router-dom";
@@ -157,7 +157,7 @@ export default function Dashboard() {
             noWrap
             className={classes.title}
           >
-            Welcome To Your Dashboard, USER
+            Welcome To Your Dashboard, -
           </Typography>
           <Link href="/home" variants="body2">
             <Button
