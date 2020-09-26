@@ -11,6 +11,7 @@ import Footer from "./Footer";
 import StudentPreferences from "../src/StudentPreferences";
 import StudentDashboard from "../src/StudentDashboard";
 import studentGroup from "../src/studentGroup";
+import StudentAccountInfo from "../src/StudentAccountInfo";
 
 class App extends React.Component {
   state = {
@@ -33,6 +34,8 @@ class App extends React.Component {
             <Route path="/studentDashboard" component={StudentDashboard} />
             <Route path="/preferences" component={StudentPreferences} />
             <Route path="/studentGroup" component={studentGroup} />
+            <Route path="/studentAccountInfo" component={StudentAccountInfo} />
+
             <Route path="/home" component={Home}>
               <Header />
               <Home />

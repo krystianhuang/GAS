@@ -15,9 +15,9 @@ export default function Home() {
         />
       </div>
       <div className="home__header">
-        <h2>Meet Like Minded Students on Example Now.</h2>
+        <h2>Meet Like Minded Students on Group Me now.</h2>
         <h3>
-          Join hundreds of other University Students on Example Now. Group
+          Join hundreds of other University Students on Group me Now. Group
           Allocations generated in under 3 minutes!
         </h3>
         <Link href="/register">

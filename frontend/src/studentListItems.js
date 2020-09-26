@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import StudentPreferences from "../src/StudentPreferences";
+import studentAccountInfo from "../src/StudentAccountInfo";
 import { NavLink } from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
 import { Link } from "react-router-dom";
@@ -24,7 +25,7 @@ import PersonIcon from "@material-ui/icons/Person";
 
 export const mainListItems = (
   <div>
-    <ListItem button component={Link} to="/home">
+    <ListItem button component={Link} to="/StudentAccountInfo">
       <ListItemIcon>
         <EditIcon />
       </ListItemIcon>
@@ -34,7 +35,7 @@ export const mainListItems = (
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="My Groups" />
+      <ListItemText primary="My Group" />
     </ListItem>
     <ListItem button component={Link} to="/preferences">
       <ListItemIcon>

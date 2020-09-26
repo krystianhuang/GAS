@@ -20,14 +20,13 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./studentListItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import CheckboxListSecondary from "./GroupTable";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        GroupMe
+        Your Website
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -116,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function GroupTable() {
+export default function StudentAccountInfo() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -154,7 +153,7 @@ export default function GroupTable() {
             noWrap
             className={classes.title}
           >
-            My Group
+            Your Account Details
           </Typography>
         </Toolbar>
       </AppBar>
@@ -181,12 +180,13 @@ export default function GroupTable() {
           <Grid container spacing={3}>
             {/* Recent Orders */}
             <Grid item xs={12}>
-              <CheckboxListSecondary />
               {/* <Paper className={classes.paper}> */}
               {/* </Paper> */}
             </Grid>
           </Grid>
-          <Box pt={4}></Box>
+          <Box pt={4}>
+            <Copyright />
+          </Box>
         </Container>
       </main>
     </div>

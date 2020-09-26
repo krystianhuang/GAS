@@ -1,71 +1,61 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Checkbox from "@material-ui/core/Checkbox";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import CommentIcon from "@material-ui/icons/Comment";
-import { Box } from "@material-ui/core";
-import { borders } from "@material-ui/system";
-import { palette } from "@material-ui/system";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    maxWidth: 6000,
-    backgroundColor: theme.palette.background.paper,
+const useStyles = makeStyles({
+  table: {
+    minWidth: 650,
   },
-}));
+});
 
-export default function CheckboxListSecondary() {
+function createData(studentid, firstname, lastname, developertype, language) {
+  return { studentid, firstname, lastname, developertype, language };
+}
+
+const rows = [
+  createData("13372558", "Mathew", "Abbou", "Frontend", "Java"),
+  createData("13843847", "James", "Adams", "Backend", "Python"),
+  createData("19873425", "Jamie", "Smith", "Frontend/Backend", "MongoDB"),
+  createData("14375846", "Colin", "Frank", "None", "UX Designer"),
+  createData("15647384", "Frank", "Smith", "Frontend", "HTML/CSS"),
+  createData("12837493", "Smith", "Sam", "Backend", "Python/MongoDB"),
+];
+
+export default function BasicTable() {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState([1]);
-
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
 
   return (
-    <div>
-      <Box border={1}>
-        <List dense className={classes.root}>
-          {[0, 1, 2, 3, 4, 5, 6].map((value) => {
-            const labelId = `checkbox-list-secondary-label-${value}`;
-            return (
-              <ListItem key={value} button>
-                <ListItemAvatar>
-                  <Avatar
-                    alt={`Avatar n°${value + 1}`}
-                    src={`/static/images/avatar/${value + 1}.jpg`}
-                  />
-                </ListItemAvatar>
-                <ListItemText
-                  id={labelId}
-                  primary={`Group Member ${value + 1}`}
-                />
-                <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="comments">
-                    <CommentIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
-              </ListItem>
-            );
-          })}
-        </List>
-      </Box>
-    </div>
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Student ID</TableCell>
+            <TableCell align="right">First Name</TableCell>
+            <TableCell align="right">Last Name</TableCell>
+            <TableCell align="right">Developer Type</TableCell>
+            <TableCell align="right">Language</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                {row.studentid}
+              </TableCell>
+              <TableCell align="right">{row.firstname}</TableCell>
+              <TableCell align="right">{row.lastname}</TableCell>
+              <TableCell align="right">{row.developertype}</TableCell>
+              <TableCell align="right">{row.language}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
