@@ -61,6 +61,7 @@ export default function CreateGroup(props) {
 						pauseOnHover: true,
 					});
 					setOpen(false);
+					window.location.reload();
 				} else {
 					toast.error("Submission failed.", {
 						position: "top-center",

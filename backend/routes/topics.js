@@ -52,6 +52,7 @@ router.delete('/', function (req, res, next) {
 router.post('/:topicId/groups', function (req, res, next) {
 	const topicRef = db.ref('topics/' + req.params.topicId);
 	const topicGroupsRef = db.ref('topics/' + req.params.topicId+'/groups');
+	const topicCandidatesRef = db.ref('topics/' + req.params.topicId+'/candidates');
 	topicRef.once('value')
 		.then(data=>{
 			let topic = data.val();
@@ -72,20 +73,19 @@ router.post('/:topicId/groups', function (req, res, next) {
 					let memberId = group.members[m];
 					for(let c in candidates){
 						let candidate = candidates[c];
-						console.log("====candidate===" + candidate);
 						if(memberId === candidate.user.id) {
-							console.log("====found===" + candidate.user);
+							candidate.user.role=candidate.role;
 							newGroup.members.push(candidate.user);
 							candidate.grouped = true;
 							break;
 						}
 					}
 				}
-				console.log(newGroup);
 				topicGroupsRef.push(newGroup);
+				const leftCandidates = candidates.filter(c=>!c.grouped);
+				topicCandidatesRef.set(leftCandidates);
 			}
 			res.send({result: "success"});
-
 		});
 });
 

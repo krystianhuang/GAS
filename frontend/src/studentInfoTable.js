@@ -16,10 +16,11 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import AdbIcon from '@material-ui/icons/Adb';
 import CreateGroup from './groupConfirmation.js';
+import {postApi} from "./Api";
+import {toast} from "react-toastify";
 
 function createData(name, calories, fat, carbs, protein) {
 	return {name, calories, fat, carbs, protein};
@@ -112,9 +113,7 @@ EnhancedTableHead.propTypes = {
 	rowCount: PropTypes.number.isRequired,
 };
 
-const useToolbarStyles = makeStyles((theme) => ({
-
-}));
+const useToolbarStyles = makeStyles((theme) => ({}));
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -176,7 +175,6 @@ export default function StudentTable(props) {
 	const [orderBy, setOrderBy] = React.useState('sid');
 	const [selected, setSelected] = React.useState([]);
 	const [page, setPage] = React.useState(0);
-	const [dense, setDense] = React.useState(false);
 	const [rowsPerPage, setRowsPerPage] = React.useState(5);
 	const {rows, topic} = props;
 
@@ -224,10 +222,6 @@ export default function StudentTable(props) {
 		setPage(0);
 	};
 
-	const handleChangeDense = (event) => {
-		setDense(event.target.checked);
-	};
-
 	const isSelected = (name) => selected.indexOf(name) !== -1;
 	const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -241,11 +235,51 @@ export default function StudentTable(props) {
 			}
 		},
 	}))(TableRow);
+
+	const handleAutoGroup = () => {
+		const body = [];
+		let count = 1;
+		/*while(topic.candidates && topic.candidates.length > 0){
+			const members = [];
+			for(let i=0; i<topic.frontend.minNumber; i++){
+				for(let j in topic.candidates){
+					if(topic.candidates[j].role === 'frontend'){
+						members.push(topic.candidates[j]);
+					}
+				}
+			}
+			body.push({
+				groupName: 'GroupA' + (count++),
+				members
+			})
+		}
+		postApi("/topics/" + props.topic.id + "/groups", body).then((res) => {
+			//Use the response data.
+			if (res.result === "success") {
+				toast.success("You have successfully created a group.", {
+					position: "top-center",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+				});
+				setOpen(false);
+				window.location.reload();
+			} else {
+				toast.error("Submission failed.", {
+					position: "top-center",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+				});
+				setOpen(false);
+			}
+		});*/
+	}
+
 	return (
 		<div className={classes.root}>
-			<div className={classes.space}>
-
-			</div>
 			<Paper className={classes.paper} elevation={15}>
 				<Toolbar
 					className={clsx(classes.header, {
@@ -258,7 +292,7 @@ export default function StudentTable(props) {
 						</Typography>
 					) : (
 						<Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-							Student Information
+							Candidates not in Groups
 						</Typography>
 					)}
 
@@ -275,11 +309,16 @@ export default function StudentTable(props) {
 							</Tooltip>
 						)
 					}
+					<Tooltip title="Auto Group">
+						<IconButton onClick={handleAutoGroup}>
+							<AdbIcon className={classes.icon} fontSize="large"/>
+						</IconButton>
+					</Tooltip>
 				</Toolbar>
 				<TableContainer>
 					<Table
 						className={classes.table}
-						size={dense ? 'small' : 'medium'}
+						size='medium'
 					>
 						<EnhancedTableHead
 							classes={classes}
@@ -317,13 +356,14 @@ export default function StudentTable(props) {
 												{row.user.studentId}
 											</TableCell>
 											<TableCell align="left">{row.user.email}</TableCell>
-											<TableCell align="left">{row.user.skills ? row.user.skills.join(', ') : ''}</TableCell>
+											<TableCell
+												align="left">{row.user.skills ? row.user.skills.join(', ') : ''}</TableCell>
 											<TableCell align="left">{row.role}</TableCell>
 										</StyledTableRow>
 									);
 								})}
 							{emptyRows > 0 && (
-								<StyledTableRow style={{height: (dense ? 33 : 53) * emptyRows}}>
+								<StyledTableRow style={{height: 53 * emptyRows}}>
 									<TableCell colSpan={6}/>
 								</StyledTableRow>
 							)}
@@ -340,11 +380,6 @@ export default function StudentTable(props) {
 					onChangeRowsPerPage={handleChangeRowsPerPage}
 				/>
 			</Paper>
-			<FormControlLabel
-				control={<Switch checked={dense} onChange={handleChangeDense} color="primary"/>}
-				label="Dense padding"
-
-			/>
 		</div>
 	)
 

@@ -20,6 +20,13 @@ import StudentTable from './studentInfoTable.js';
 import {getApi} from "./Api";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableCell from "@material-ui/core/TableCell";
+import TableRow from "@material-ui/core/TableRow";
+import TableBody from "@material-ui/core/TableBody";
 
 
 function Copyright() {
@@ -120,7 +127,7 @@ export default function EnhancedTable() {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(true);
 	const [topics, setTopics] = React.useState([]);
-	const [topic, setTopic] = React.useState({candidates: []});
+	const [topic, setTopic] = React.useState({candidates: [], groups: []});
 	// Send get users api and set rows in state.
 	useEffect(() => {
 		getApi('/topics').then(data => setTopics(data));
@@ -129,6 +136,13 @@ export default function EnhancedTable() {
 	const handleTopicChange = (event) => {
 		for (let i in topics) {
 			if (topics[i].id === event.target.value) {
+				if (topics[i].groups) {
+					const groups = [];
+					for (let key of Object.keys(topics[i].groups)) {
+						groups.push(topics[i].groups[key]);
+					}
+					topics[i].groups = groups;
+				}
 				setTopic(topics[i]);
 				break;
 			}
@@ -149,14 +163,13 @@ export default function EnhancedTable() {
 					<IconButton
 						edge="start"
 						color="inherit"
-						aria-label="open drawer"
 						onClick={handleDrawerOpen}
 						className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
 					>
 						<MenuIcon/>
 					</IconButton>
 					<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-						Manual Student Assigner Tool
+						Student Assigner Tool
 					</Typography>
 				</Toolbar>
 			</AppBar>
@@ -201,6 +214,40 @@ export default function EnhancedTable() {
 						<Grid item xs={12}>
 							<StudentTable rows={topic.candidates ? topic.candidates : []} topic={topic}/>
 						</Grid>
+						{topic.groups && topic.groups.map((group) => (
+							<Grid item xs={6}>
+								<Card variant="outlined">
+									<CardContent>
+										<Typography color="textSecondary" variant="h5" component="h2" gutterBottom>
+											{group.name}
+										</Typography>
+										<Divider/>
+										<Table size="small">
+											<TableHead>
+												<TableRow>
+													<TableCell>Student ID</TableCell>
+													<TableCell>Email</TableCell>
+													<TableCell>Skills</TableCell>
+													<TableCell>Role</TableCell>
+												</TableRow>
+											</TableHead>
+											<TableBody>
+												{group.members.map((row) => (
+													<TableRow key={row.studentId}>
+														<TableCell component="th" scope="row">
+															{row.studentId}
+														</TableCell>
+														<TableCell>{row.email}</TableCell>
+														<TableCell>{row.skills.join(',')}</TableCell>
+														<TableCell>{row.role}</TableCell>
+													</TableRow>
+												))}
+											</TableBody>
+										</Table>
+									</CardContent>
+								</Card>
+							</Grid>
+						))}
 					</Grid>
 					<Box pt={4}>
 						<Copyright/>
