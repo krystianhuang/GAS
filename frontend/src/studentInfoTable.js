@@ -239,20 +239,63 @@ export default function StudentTable(props) {
 	const handleAutoGroup = () => {
 		const body = [];
 		let count = 1;
-		/*while(topic.candidates && topic.candidates.length > 0){
+		while(topic.candidates && topic.candidates.length > 0){
 			const members = [];
+			let frontendSatisfied = true;
+			let backendSatisfied = true;
+			let found = false;
 			for(let i=0; i<topic.frontend.minNumber; i++){
+				found = false;
 				for(let j in topic.candidates){
-					if(topic.candidates[j].role === 'frontend'){
-						members.push(topic.candidates[j]);
+					if(topic.candidates[j].role === 'frontend' && !topic.candidates[j].grouped){
+						members.push(topic.candidates[j].user.id);
+						topic.candidates[j].grouped = true;
+						found = true;
+						break;
 					}
 				}
+				if(!found){
+					frontendSatisfied = false;
+					break;
+				}
 			}
-			body.push({
-				groupName: 'GroupA' + (count++),
-				members
-			})
+
+			for(let i=0; i<topic.backend.minNumber; i++){
+				found = false;
+				for(let j in topic.candidates){
+					if(topic.candidates[j].role === 'backend' && !topic.candidates[j].grouped){
+						members.push(topic.candidates[j].user.id);
+						topic.candidates[j].grouped = true;
+						found = true;
+						break;
+					}
+				}
+				if(!found){
+					backendSatisfied = false;
+					break;
+				}
+			}
+
+			if(frontendSatisfied && backendSatisfied) {
+				body.push({
+					groupName: 'GroupA' + (count++),
+					members
+				});
+				topic.candidates = topic.candidates.filter(c=>!c.grouped);
+			} else {
+				let c = 0;
+				while(topic.candidates && topic.candidates.length > 0) {
+					body[c].members.push(topic.candidates[0].user.id);
+					topic.candidates[0].grouped = true;
+					c++;
+					if(c>body.length -1){
+						c -= body.length;
+					}
+					topic.candidates = topic.candidates.filter(can=>!can.grouped);
+				}
+			}
 		}
+		console.log(body);
 		postApi("/topics/" + props.topic.id + "/groups", body).then((res) => {
 			//Use the response data.
 			if (res.result === "success") {
@@ -263,7 +306,6 @@ export default function StudentTable(props) {
 					closeOnClick: true,
 					pauseOnHover: true,
 				});
-				setOpen(false);
 				window.location.reload();
 			} else {
 				toast.error("Submission failed.", {
@@ -273,9 +315,8 @@ export default function StudentTable(props) {
 					closeOnClick: true,
 					pauseOnHover: true,
 				});
-				setOpen(false);
 			}
-		});*/
+		});
 	}
 
 	return (

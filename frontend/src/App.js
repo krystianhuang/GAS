@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import GroupTable from './groupData.js';
 import StudentPreferences from './StudentPreferences';
 import StudentData from './studentData';
+import StudentGroup from './studentGroup';
 import Dashboard from './StudentDashboard';
 import Info from './Info';
 import {userContext} from './userContext';
@@ -56,6 +57,7 @@ class App extends React.Component {
 								<Route path="/StudentDashboard" component={Dashboard}/>
 								<Route path="/StuInfo" component={Info}/>
 								<Route path="/StudentPreferences" component={StudentPreferences}/>
+								<Route path="/studentGroup" component={StudentGroup}/>
 								<Route exact path="/" component={Home}>
                 <Header />
                 <Home />

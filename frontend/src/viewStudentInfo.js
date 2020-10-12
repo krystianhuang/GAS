@@ -215,7 +215,7 @@ export default function EnhancedTable() {
 							<StudentTable rows={topic.candidates ? topic.candidates : []} topic={topic}/>
 						</Grid>
 						{topic.groups && topic.groups.map((group) => (
-							<Grid item xs={6}>
+							<Grid item xs={12}>
 								<Card variant="outlined">
 									<CardContent>
 										<Typography color="textSecondary" variant="h5" component="h2" gutterBottom>

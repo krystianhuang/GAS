@@ -46,7 +46,47 @@ router.put('/:userId', function (req, res, next) {
 	const newUser = userRef.update(data);
 	res.send({result: "success"});
 });
+/* Add users topic. */
+router.get('/:userId/topics', function (req, res, next) {
+	const userRef = db.ref('users/' + req.params.userId);
+	userRef.once('value')
+		.then(data => {
+			const currentUser = data.val();
+			const topics = currentUser.topics ? currentUser.topics : [];
+			/*for(let i in topics){
+				const topicRef = db.ref('topics/' + topics[i].topicId);
+				topicRef.once('value')
+					.then(data=> {
+						const topic = data.val();
+						for (var key of Object.keys(topic.groups)) {
+							const group = topic.groups[key];
+							if(group.members.flatMap(m=>m.id).includes(req.params.userId)){
+								topics[i].group = group;
+							}
+						}
+					});
+			}*/
+			res.send(topics);
+		});
+});
 
+/* Add users topic. */
+router.get('/:userId/topics/:topicId', function (req, res, next) {
+	const topicRef = db.ref('topics/' + req.params.topicId);
+	topicRef.once('value')
+		.then(data => {
+			const topic = data.val();
+			for (var key of Object.keys(topic.groups)) {
+				const group = topic.groups[key];
+				console.log(group.members.flatMap(m => m.id));
+				if (group.members.flatMap(m => m.id).includes(req.params.userId)) {
+					res.send(group);
+					return;
+				}
+			}
+			res.send([]);
+		});
+});
 
 /* Add users topic. */
 router.post('/:userId/topics', function (req, res, next) {
