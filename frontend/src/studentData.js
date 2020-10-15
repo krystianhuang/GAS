@@ -125,7 +125,6 @@ export default function StudentData() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
@@ -142,13 +141,8 @@ export default function StudentData() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Student Information Summary
+            User Information Summary
           </Typography>
-          {/* <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -172,12 +166,8 @@ export default function StudentData() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
         <Grid container spacing={3}>
-            
-            {/* Recent Orders */}
             <Grid item xs={12}>
-              {/* <Paper className={classes.paper}> */}
                 <StudentTable />
-              {/* </Paper> */}
             </Grid>
           </Grid>
           <Box pt={4}>

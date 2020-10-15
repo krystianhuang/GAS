@@ -13,21 +13,21 @@ export const mainListItems = (
       <ListItemIcon>
          <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText textDecoration="none" primary="My Information" />
+      <ListItemText textDecoration="none" primary="My Profile" />
     </ListItem>
 
     <ListItem button component={Link} to="/StudentPreferences">
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText textDecoration="none" primary="My Preferences" />
+      <ListItemText textDecoration="none" primary="Join Topics" />
     </ListItem>
     
     <ListItem button component={Link} to="/studentGroup">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="My Group" />
+      <ListItemText primary="My Groups" />
     </ListItem>
 
   </div>

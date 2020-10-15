@@ -8,7 +8,6 @@ import Home from "./Home";
 import Header from "../src/Header";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import GroupTable from './groupData.js';
 import StudentPreferences from './StudentPreferences';
 import StudentData from './studentData';
 import StudentGroup from './studentGroup';
@@ -53,7 +52,6 @@ class App extends React.Component {
 								<Route path="/register" component={RegisterSide}/>
 								<Route path="/viewStudentInfo" component={EnhancedTable}/>
 								<Route path="/studentData" component={StudentData}/>
-								<Route path="/groupData" component={GroupTable}/>
 								<Route path="/StudentDashboard" component={Dashboard}/>
 								<Route path="/StuInfo" component={Info}/>
 								<Route path="/StudentPreferences" component={StudentPreferences}/>

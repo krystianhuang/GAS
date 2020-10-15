@@ -3,13 +3,9 @@ import clsx from "clsx";
 import {makeStyles} from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import {mainListItems, secondaryListItems} from "./studentListItems";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -17,6 +13,13 @@ import TextField from "@material-ui/core/TextField";
 import {getApi} from "./Api";
 import Grid from "@material-ui/core/Grid";
 import {userContext} from "./userContext";
+import TableContainer from "@material-ui/core/TableContainer";
+import Table from "@material-ui/core/Table";
+import Paper from "@material-ui/core/Paper";
+import TableRow from "@material-ui/core/TableRow";
+import TableHead from "@material-ui/core/TableHead";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
 
 
 const drawerWidth = 240;
@@ -102,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
 
 	form: {
 		padding: '20px',
-		marginTop: '70px',
+		marginTop: '80px',
 	}
 }));
 
@@ -111,13 +114,10 @@ export default function Dashboard() {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(true);
 	const [topics, setTopics] = React.useState([]);
-	const [topic, setTopic] = React.useState();
-	const [canDoFrontend, setCanDoFrontend] = React.useState(false);
-	const [canDoBackend, setCanDoBackend] = React.useState(false);
-	const [role, setRole] = React.useState(false);
-	// Send get users api and set rows in state.
+	const [group, setGroup] = React.useState({});
+
 	useEffect(() => {
-		getApi('users/'+user.id+'/topics').then(data => setTopics(data));
+		getApi('users/' + user.id + '/topics').then(data => setTopics(data));
 	}, []);
 
 	const handleDrawerOpen = () => {
@@ -128,12 +128,7 @@ export default function Dashboard() {
 	};
 
 	const handleTopicChange = (event) => {
-		for (let i in topics) {
-			if (topics[i].id === event.target.value) {
-				setTopic(topics[i]);
-				break;
-			}
-		}
+		getApi('users/' + user.id + '/topics/' + event.target.value).then(data => setGroup(data));
 	}
 
 	return (
@@ -174,6 +169,33 @@ export default function Dashboard() {
 								</MenuItem>
 							))}
 						</TextField>
+					</Grid>
+					<Grid item xs={12}>
+						<h4>{group.name}</h4>
+					</Grid>
+					<Grid item xs={12}>
+						<TableContainer component={Paper}>
+							<Table className={classes.table} aria-label="simple table">
+								<TableHead>
+									<TableRow>
+										<TableCell>Student ID</TableCell>
+										<TableCell>Email</TableCell>
+										<TableCell>Skills</TableCell>
+										<TableCell>Role</TableCell>
+									</TableRow>
+								</TableHead>
+								<TableBody>
+									{group.members && group.members.map((row) => (
+										<TableRow key={row.email}>
+											<TableCell>{row.studentId}</TableCell>
+											<TableCell>{row.email}</TableCell>
+											<TableCell>{row.skills.join(', ')}</TableCell>
+											<TableCell>{row.role}</TableCell>
+										</TableRow>
+									))}
+								</TableBody>
+							</Table>
+						</TableContainer>
 					</Grid>
 				</Grid>
 			</main>
